@@ -1,0 +1,311 @@
+#!/bin/bash
+
+function cdd() 
+{
+    dir=""
+    filter=""
+
+    if [ "$1" != "" ]; then
+		dir="$1"
+    fi
+    
+    if [ "$2" != "" ]; then
+		filter="$2"
+    fi
+
+    if [ "$filter" != "" ]; then
+		cd "$dir" && ls | grep -i "$filter"
+    elif [ "$dir" != "" ]; then
+		cd "$dir" && ls
+    elif [ "$dir" = "" ]; then
+		cd ~ && ls
+    fi	
+}
+
+function catt()
+{
+    if [ "$1" != "" ]; then
+		cat "$1" | less
+    else
+		echo "Error: No arguments were given"
+    fi
+}
+
+function mkdirr()
+{
+    if [ "$1" != "" ]; then
+		mkdir "$1" && cd "$1"
+    else
+		echo "Error: No arguments were given"
+    fi
+}
+
+function lss()
+{
+    if [ "$1" != "" ] && [ "$2" != "" ]; then
+		ls "$1" | grep -i "$2"
+    elif [ "$1" != "" ] && [ "$2" == "" ]; then
+		ls ./ | grep -i "$1"
+    else #both $1 and $2 were empty
+		echo "Error: No arguments were given"
+    fi
+}
+
+function c_watch_start()
+{
+	if [ "${wpid}" == "" ]; then
+		gulp scss-watch \
+			html-watch &
+		wpid=$!
+	else
+		echo "watch_dev already started - nothing was executed"
+	fi
+}
+
+function c_watch_kill()
+{
+	if [ -n "$wpid" ]; then
+		kill $wpid
+	fi
+	wpid=""
+}
+
+function c_watch_restart()
+{
+	c_watch_kill
+	c_watch_start
+}
+
+function c_server_dev_start()
+{
+	if [ "${spid}" == "" ]; then
+		gulp start-server-dev &
+		export spid=$!
+	else
+		echo "server_dev already started - nothing was executed"
+	fi
+}
+
+function c_server_dev_kill()
+{
+	if [ -n "$spid" ]; then
+		kill $spid
+		echo "killing ${pid}"
+	fi
+	export spid=""
+}
+
+function c_server_dev_restart()
+{
+	c_server_dev_kill
+	c_server_dev_start
+}
+
+function c_lr_start()
+{
+	if [ "${lrpid}" == "" ]; then
+		gulp start-lr &
+		export lrpid=$!
+	else
+		echo "lr_dev already started - nothing was executed"
+	fi
+}
+
+function c_build_dev_restart_server()
+{
+	gulp build-dev
+	c_server_dev_restart
+}
+
+function c_lr_kill()
+{
+	if [ -n "$lrpid" ]; then
+		kill $lrpid
+		echo "killing ${lrpid}"
+	fi
+	export lrpid=""
+}
+
+function c_lr_restart()
+{
+	c_lr_kill
+	c_lr_start
+}
+
+function c_geany_open_recursive
+{
+	root="$1"
+	namePattern="$2"
+	if [ -z ${2+x} ]; then
+		namePattern="*"
+	fi
+	if [ -z ${1+x} ]; then
+		root="./"
+	fi
+	
+	result=""
+	
+	unset i
+	while IFS= read -r -d $'\0' file; do
+		result="${file} ${result}"
+	done < <(find ./"${root}" -name "${namePattern}" -type f -print0)
+	
+	echo "${result}"
+	geany -i ${result} 2>/dev/null &
+}
+
+function c_geany_open
+{
+    if [ -z ${1+x} ]; then
+		./.geany_open.sh
+	else
+		openCmd="${1}/.geany_open.sh"
+		$(${openCmd})
+    fi
+}
+
+function documentLine
+{
+	printfNumTimes() {
+		str=$1
+		num=$2
+		
+		perl -E "print '${str}' x ${num}"
+	}
+
+
+	lineToDocument=`cat`
+
+	len=${#lineToDocument}
+	len=$((len+2))
+
+	printf "//"
+	printfNumTimes "-" ${len}
+	printf "//\n// ${lineToDocument} //\n//"
+	printfNumTimes "-" ${len}
+	printf "//\n"
+}
+
+function geanyy
+{
+    if [ -z ${1+x} ]; then
+		if [ -e ~/tmp ] && [ ! -f ~/tmp ]; then
+			rm -rf ~/tmp
+			touch ~/tmp
+		elif [ ! -e ~/tmp ]; then
+			touch ~/tmp
+		fi
+		
+		geany -i ~/tmp &>/dev/null &
+    else
+		geany -i $1 &>/dev/null &
+    fi
+}
+
+function c_execute
+{
+	match="[not set?]"
+	if [ -z ${1+x} ]; then
+		echo "c_execute requires a filename parameter"
+	else
+		curFile="${1}"
+		fileExtension="${curFile##*.}"
+		filenameNoExt="${curFile%.*}"
+		fileContents=$(cat ${1})
+		regex="--execute=(.*?)--"
+		if [[ "${fileContents}" =~ \-\-execute\=([a-z0-9_/]*)\-\- ]]; then
+			match="${BASH_REMATCH[1]}"
+			
+			case ${fileExtension} in
+			js)
+				case ${match} in
+					node)
+						node "${curFile}"
+						;;
+					mocha)
+						mocha -u tdd --no-colors --reporter spec --require mocha-clean "${curFile}"
+						;;
+					browserify)
+						browserify -e "${curFile}" -o "${filenameNoExt}.browser.js"
+						;;
+					phantom)
+						phantomjs "${curFile}"
+						;;
+					*)
+						echo "no execute match found for ${match}"
+						;;
+				esac
+				;;
+			sh)
+				case ${match} in
+					/bin/bash)
+						/bin/bash "${curFile}"
+						;;
+					*)
+						echo "no execute match found for ${match}"
+						;;
+				esac
+				;;
+			sql)
+				case ${match} in
+					psql_ptq)
+						psql -h /run/postgresql/ -U phil -d pass_the_quill -f "${curFile}"
+						;;
+					*)
+						echo "no execute match found for ${match}"
+						;;
+				esac
+				;;
+			*)
+				echo "no file extension match for ${fileExtension}"
+				;;
+			esac
+		else
+			echo "no execute matches for current file ${curFile}"
+		fi
+	fi
+}
+
+function c_psql_connect
+{
+	opts=""
+	if [ -z ${1+x} ]; then
+		echo "c_psql_connect requires option arguments"
+	else
+		opts="${1}"
+		psql -h /run/postgresql/ ${opts}
+	fi
+}
+
+function c_npm_install_my
+{
+	if [ -z ${1+x} ]; then
+		echo "c_npm_install_my requires a string argument (package name)"
+	else
+        pkgName="${1}"
+        npm install --save "git://github.com/olsonpm/${pkgName}.git"
+    fi
+}
+
+#exports
+export -f c_geany_open
+export -f c_geany_open_recursive
+export -f geanyy
+export -f c_execute
+export -f documentLine
+export -f c_psql_connect
+export -f c_npm_install_my
+
+export -f c_lr_start
+export -f c_lr_kill
+export -f c_lr_restart
+
+export -f c_watch_start
+export -f c_watch_kill
+export -f c_watch_restart
+
+
+# external fxn libs
+if [ -f ~/.bash_fxnsd/git ]; then
+	. ~/.bash_fxnsd/git
+fi

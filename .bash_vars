@@ -1,0 +1,24 @@
+#!/bin/bash
+
+# pd = project directory
+# wpid = watch process id
+# spid = server process id
+
+export pd=/home/phil/misc-git-repos/my-repos/personal-home
+export my_repos=/home/phil/misc-git-repos/my-repos
+export wpid=""
+export spid=""
+export lrpid=""
+export ENVIRONMENT="dev"
+export geanylua_ofbt_basedir="/home/phil/heroku/pass-the-quill/"
+
+# psql environment vars
+export EDITOR=geany
+export HISTFILESIZE=
+export HISTSIZE=
+
+export PATH="/home/phil/bin:${PATH}"
+
+# different website environment variables
+export PERSONAL_HOME_NODE_ENV="dev"
+export PERSONAL_HOME_PORT=5001

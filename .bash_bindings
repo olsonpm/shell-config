@@ -1,0 +1,3 @@
+bind '"\033[;55":backward-kill-word'
+bind '"\033[53":kill-word'
+bind '"\C-k":kill-whole-line'
