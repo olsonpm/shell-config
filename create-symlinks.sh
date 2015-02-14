@@ -1,18 +1,19 @@
 #!/usr/bin/env bash
 
-local DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
+DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 
+rm -rf ~/.bash_old
 mkdir ~/.bash_old
-cp ~/.bash_bindings ~/.bash_old
-cp ~/.bash_fxns ~/.bash_old
-cp ~/.bash_logout ~/.bash_old
-cp ~/.bashrc ~/.bash_old
-cp ~/.bash_vars ~/.bash_old
-cp ~/.Xresources ~/.bash_old
+mv ~/.bash_bindings ~/.bash_old 2>/dev/null
+mv ~/.bash_fxns ~/.bash_old 2>/dev/null
+mv ~/.bash_logout ~/.bash_old 2>/dev/null
+mv ~/.bashrc ~/.bash_old 2>/dev/null
+mv ~/.bash_vars ~/.bash_old 2>/dev/null
+mv ~/.Xresources ~/.bash_old 2>/dev/null
 
-ln -s ~/.bash_bindings "${DIR}/.bash_bindings"
-ln -s ~/..bash_fxns "${DIR}/.bash_fxns"
-ln -s ~/.bash_logout "${DIR}/.bash_logout"
-ln -s ~/.bashrc "${DIR}/.bashrc"
-ln -s ~/.bash_vars "${DIR}/.bash_vars"
-ln -s ~/.Xresources "${DIR}/.Xresources"
+ln -s "${DIR}/.bash_bindings" ~/.bash_bindings
+ln -s "${DIR}/.bash_fxns" ~/.bash_fxns
+ln -s "${DIR}/.bash_logout" ~/.bash_logout
+ln -s "${DIR}/.bashrc" ~/.bashrc
+ln -s "${DIR}/.bash_vars" ~/.bash_vars
+ln -s "${DIR}/.Xresources" ~/.Xresources
