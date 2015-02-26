@@ -122,6 +122,9 @@ fi
 if [ -f ~/.bash_private_vars ]; then
 	. ~/.bash_private_vars
 fi
+if [ -f ~/.bash_settings ]; then
+	. ~/.bash_settings
+fi
 
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile

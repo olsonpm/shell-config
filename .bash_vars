@@ -6,6 +6,8 @@
 
 export pd=/home/phil/misc-git-repos/my-repos/personal-home
 export my_repos=/home/phil/misc-git-repos/my-repos
+export forked_repos=/home/phil/misc-git-repos/forked-repos
+export cloned_repos=/home/phil/misc-git-repos/cloned-repos
 export wpid=""
 export spid=""
 export lrpid=""

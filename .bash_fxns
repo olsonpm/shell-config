@@ -54,8 +54,7 @@ function lss()
 function c_watch_start()
 {
 	if [ "${wpid}" == "" ]; then
-		gulp scss-watch \
-			html-watch &
+		ptr run-task scssWatch "env=dev" &
 		wpid=$!
 	else
 		echo "watch_dev already started - nothing was executed"
@@ -79,7 +78,7 @@ function c_watch_restart()
 function c_server_dev_start()
 {
 	if [ "${spid}" == "" ]; then
-		gulp start-server-dev &
+		ptr run-task startServer "env=dev" &
 		export spid=$!
 	else
 		echo "server_dev already started - nothing was executed"
@@ -104,7 +103,7 @@ function c_server_dev_restart()
 function c_lr_start()
 {
 	if [ "${lrpid}" == "" ]; then
-		gulp start-lr &
+		ptr run-task startLr &
 		export lrpid=$!
 	else
 		echo "lr_dev already started - nothing was executed"
@@ -113,7 +112,7 @@ function c_lr_start()
 
 function c_build_dev_restart_server()
 {
-	gulp build-dev
+	ptr run-task build "env=dev"
 	c_server_dev_restart
 }
 
@@ -277,16 +276,6 @@ function c_psql_connect
 	fi
 }
 
-function c_npm_install_my
-{
-	if [ -z ${1+x} ]; then
-		echo "c_npm_install_my requires a string argument (package name)"
-	else
-        pkgName="${1}"
-        npm install --save "git://github.com/olsonpm/${pkgName}.git"
-    fi
-}
-
 #exports
 export -f c_geany_open
 export -f c_geany_open_recursive
@@ -294,7 +283,6 @@ export -f geanyy
 export -f c_execute
 export -f documentLine
 export -f c_psql_connect
-export -f c_npm_install_my
 
 export -f c_lr_start
 export -f c_lr_kill
@@ -308,4 +296,7 @@ export -f c_watch_restart
 # external fxn libs
 if [ -f ~/.bash_fxnsd/git ]; then
 	. ~/.bash_fxnsd/git
+fi
+if [ -f ~/.bash_fxnsd/npm ]; then
+	. ~/.bash_fxnsd/npm
 fi
