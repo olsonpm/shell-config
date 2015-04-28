@@ -294,9 +294,9 @@ export -f c_watch_restart
 
 
 # external fxn libs
-if [ -f ~/.bash_fxnsd/git ]; then
-	. ~/.bash_fxnsd/git
+if [ -f ~/.bash_fxns.d/git ]; then
+	. ~/.bash_fxns.d/git
 fi
-if [ -f ~/.bash_fxnsd/npm ]; then
-	. ~/.bash_fxnsd/npm
+if [ -f ~/.bash_fxns.d/npm ]; then
+	. ~/.bash_fxns.d/npm
 fi
