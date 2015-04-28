@@ -99,3 +99,7 @@ XTerm*cursorColor    : _cursorColor
 	Ctrl<Key>BackSpace: string("\033[;55") \n\
 	Ctrl<Key>Delete: string("\033[53") \n\
 	Alt<Key>F4: string("0x04")
+        
+XTerm.VT100.translations: #override \
+    Alt<Key>Up: scroll-back(1) \n\
+    Alt<Key>Down: scroll-forw(1) 
