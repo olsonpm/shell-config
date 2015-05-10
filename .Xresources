@@ -11,6 +11,7 @@ xterm*charClass: 33:48,35:48,37:48,43:48,45-47:48,64:48,95:48,126:48
 xterm*termName: xterm-color
 xterm*eightBitInput: false
 
+
 !BLK Cursor
 #define _color0        #000d18
 #define _color8        #000d18
@@ -96,10 +97,8 @@ XTerm*cursorColor    : _cursorColor
 !Custom
 !------
 *translations: #override \
-	Ctrl<Key>BackSpace: string("\033[;55") \n\
-	Ctrl<Key>Delete: string("\033[53") \n\
-	Alt<Key>F4: string("0x04")
-        
-XTerm.VT100.translations: #override \
+    Ctrl<Key>BackSpace: string("\033[;55") \n\
+    Ctrl<Key>Delete: string("\033[53") \n\
     Alt<Key>Up: scroll-back(1) \n\
-    Alt<Key>Down: scroll-forw(1) 
+    Alt<Key>Down: scroll-forw(1) \n\
+    Alt<Key>F4: string("0x04")
