@@ -300,6 +300,6 @@ fi
 if [ -f ~/.bash_fxns.d/npm ]; then
 	. ~/.bash_fxns.d/npm
 fi
-if [ -f ~/.bash_fxnsd/docker ]; then
-    . ~/.bash_fxnsd/docker
+if [ -f ~/.bash_fxns.d/docker ]; then
+    . ~/.bash_fxns.d/docker
 fi

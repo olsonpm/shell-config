@@ -24,12 +24,12 @@ fi
 startupDir="$HOME/startup.d"
 startupLog="${startupDir}/startup.log"
 mkdir -p "${startupDir}"
-touch "${startupLog}"
+echo "$(date)" > "${startupLog}"
 if [ -d "${startupDir}" ]; then
     for file in "${startupDir}"/*
     do
         if [ "${file}" != "${startupLog}" ]; then
-            ${file} &> "${startupLog}"
+            ${file} >> "${startupLog}" 2>&1
         fi
     done
 fi
