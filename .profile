@@ -20,3 +20,16 @@ fi
 if [ -d "$HOME/bin" ] ; then
     PATH="$HOME/bin:$PATH"
 fi
+
+startupDir="$HOME/startup.d"
+startupLog="${startupDir}/startup.log"
+mkdir -p "${startupDir}"
+touch "${startupLog}"
+if [ -d "${startupDir}" ]; then
+    for file in "${startupDir}"/*
+    do
+        if [ "${file}" != "${startupLog}" ]; then
+            ${file} &> "${startupLog}"
+        fi
+    done
+fi
