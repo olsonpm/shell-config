@@ -2,7 +2,7 @@
 !Got from website
 !----------------
 
-XTerm*faceName: Bitstream Vera Serif Mono
+xterm*faceName: Bitstream Vera Serif Mono
 xterm*faceSize: 11
 xterm*vt100*geometry: 80x60
 xterm*saveLines: 16384
