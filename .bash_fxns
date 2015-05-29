@@ -188,16 +188,9 @@ function documentLine
 function geanyy
 {
     if [ -z ${1+x} ]; then
-		if [ -e ~/tmp ] && [ ! -f ~/tmp ]; then
-			rm -rf ~/tmp
-			touch ~/tmp
-		elif [ ! -e ~/tmp ]; then
-			touch ~/tmp
-		fi
-		
-		geany -i ~/tmp &>/dev/null &
+		echo "geanyy requires at least one argument"
     else
-		geany -i $1 &>/dev/null &
+		geany -i "$@" &>/dev/null &
     fi
 }
 
@@ -310,4 +303,7 @@ if [ -f ~/.bash_fxns.d/git ]; then
 fi
 if [ -f ~/.bash_fxns.d/npm ]; then
 	. ~/.bash_fxns.d/npm
+fi
+if [ -f ~/.bash_fxns.d/docker ]; then
+    . ~/.bash_fxns.d/docker
 fi
