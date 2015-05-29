@@ -142,3 +142,5 @@ export PATH="/usr/local/heroku/bin:$PATH"
 
 export NVM_DIR="/home/phil/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+
+[ -s "/home/phil/.dnx/dnvm/dnvm.sh" ] && . "/home/phil/.dnx/dnvm/dnvm.sh" # Load dnvm

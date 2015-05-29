@@ -43,9 +43,9 @@ function mkdirr()
 function lss()
 {
     if [ "$1" != "" ] && [ "$2" != "" ]; then
-		ls "$1" | grep -i "$2"
+		ls -a "$1" | grep -i "$2"
     elif [ "$1" != "" ] && [ "$2" == "" ]; then
-		ls ./ | grep -i "$1"
+		ls -a ./ | grep -i "$1"
     else #both $1 and $2 were empty
 		echo "Error: No arguments were given"
     fi
@@ -249,6 +249,17 @@ function c_execute
 				case ${match} in
 					psql_ptq)
 						psql -h /run/postgresql/ -U phil -d pass_the_quill -f "${curFile}"
+						;;
+					*)
+						echo "no execute match found for ${match}"
+						;;
+				esac
+				;;
+			cs)
+				case ${match} in
+					mono)
+						mcs "${curFile}"
+                                                mono "${filenameNoExt}.exe"
 						;;
 					*)
 						echo "no execute match found for ${match}"
