@@ -1,0 +1,17 @@
+{
+    "node": "true"
+    , "multistr": "true"
+    , "newcap": "false"
+    , "laxcomma": "true"
+    , "laxbreak": "true"
+
+    , "globals": {
+        "document": false
+        , "window": false
+        , "CSSRule": false
+        , "Image": false
+        , "suite": false
+        , "setup": false
+        , "test": false
+    }
+}
