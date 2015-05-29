@@ -12,6 +12,9 @@ export wpid=""
 export spid=""
 export lrpid=""
 export ENVIRONMENT="dev"
+export ENV_DEV="dev"
+export ENV_TEST="test"
+export ENV_PROD="prod"
 export geanylua_ofbt_basedir="/home/phil/heroku/pass-the-quill/"
 
 # psql environment vars
