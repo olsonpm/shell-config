@@ -40,6 +40,15 @@ function mkdirr()
     fi
 }
 
+function mkdirrp()
+{
+    if [ "$1" != "" ]; then
+		mkdir -p "$1" && cd "$1"
+    else
+		echo "Error: No arguments were given"
+    fi
+}
+
 function lss()
 {
     if [ "$1" != "" ] && [ "$2" != "" ]; then
@@ -215,7 +224,7 @@ function c_execute
 						node "${curFile}"
 						;;
 					mocha)
-						mocha -u tdd --no-colors --reporter spec --require mocha-clean "${curFile}"
+						mocha -u tdd --no-colors --reporter spec "${curFile}"
 						;;
 					browserify)
 						browserify -e "${curFile}" -o "${filenameNoExt}.browser.js"
