@@ -91,6 +91,7 @@ fi
 alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
+#alias sudo='sudo env PATH=/usr/local/lib/node_modules:$(sudo su -c 'echo $PATH')'
 
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
