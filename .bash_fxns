@@ -140,28 +140,6 @@ function c_lr_restart()
 	c_lr_start
 }
 
-function c_geany_open_recursive
-{
-	root="$1"
-	namePattern="$2"
-	if [ -z ${2+x} ]; then
-		namePattern="*"
-	fi
-	if [ -z ${1+x} ]; then
-		root="./"
-	fi
-	
-	result=""
-	
-	unset i
-	while IFS= read -r -d $'\0' file; do
-		result="${file} ${result}"
-	done < <(find ./"${root}" -name "${namePattern}" -type f -print0)
-	
-	echo "${result}"
-	geany -i ${result} 2>/dev/null &
-}
-
 function c_geany_open
 {
     if [ -z ${1+x} ]; then
@@ -200,6 +178,33 @@ function geanyy
 		echo "geanyy requires at least one argument"
     else
 		geany -i "$@" &>/dev/null &
+    fi
+}
+
+function geanyyp
+{
+    if [ -z ${1+x} ]; then
+		echo "geanyy requires at least one argument"
+    else
+		geany -ip "$@" &>/dev/null &
+    fi
+}
+
+function geanyyi
+{
+    if [ -z ${1+x} ]; then
+		echo "geanyy requires at least one argument"
+    else
+		geany "$@" &>/dev/null &
+    fi
+}
+
+function geanyyip
+{
+    if [ -z ${1+x} ]; then
+		echo "geanyy requires at least one argument"
+    else
+		geany -p "$@" &>/dev/null &
     fi
 }
 
@@ -290,9 +295,10 @@ function c_psql_connect
 }
 
 #exports
-export -f c_geany_open
-export -f c_geany_open_recursive
 export -f geanyy
+export -f geanyyp
+export -f geanyyi
+export -f geanyyip
 export -f c_execute
 export -f documentLine
 export -f c_psql_connect

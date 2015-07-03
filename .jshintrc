@@ -13,5 +13,8 @@
         , "suite": false
         , "setup": false
         , "test": false
+        , "describe": false
+        , "before": false
+        , "it": false
     }
 }
