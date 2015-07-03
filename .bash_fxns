@@ -177,7 +177,7 @@ function geanyy
     if [ -z ${1+x} ]; then
 		echo "geanyy requires at least one argument"
     else
-		geany -i "$@" &>/dev/null &
+		geany "$@" &>/dev/null &
     fi
 }
 
@@ -186,7 +186,7 @@ function geanyyp
     if [ -z ${1+x} ]; then
 		echo "geanyy requires at least one argument"
     else
-		geany -ip "$@" &>/dev/null &
+		geany -p "$@" &>/dev/null &
     fi
 }
 
@@ -195,7 +195,7 @@ function geanyyi
     if [ -z ${1+x} ]; then
 		echo "geanyy requires at least one argument"
     else
-		geany "$@" &>/dev/null &
+		geany "$@" &>/dev/null
     fi
 }
 
@@ -204,7 +204,7 @@ function geanyyip
     if [ -z ${1+x} ]; then
 		echo "geanyy requires at least one argument"
     else
-		geany -p "$@" &>/dev/null &
+		geany -p "$@" &>/dev/null
     fi
 }
 
