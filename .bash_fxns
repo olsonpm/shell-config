@@ -294,6 +294,13 @@ function c_psql_connect
 	fi
 }
 
+# found here: http://stackoverflow.com/a/4256095
+# example usage: find . -type f | basename_sort
+function basename_sort
+{
+	perl -e 'print sort{($p=$a)=~s!.*/!!;($q=$b)=~s!.*/!!;$p cmp$q}<>'
+}
+
 #exports
 export -f geanyy
 export -f geanyyp
