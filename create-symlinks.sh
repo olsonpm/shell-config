@@ -15,9 +15,12 @@ mv ~/.Xresources ~/.bash_old 2>/dev/null
 mv ~/.xsessionrc ~/.bash_old 2>/dev/null
 
 mkdir -p ~/startup.d
+mkdir -p ~/perl-bits
 touch ~/startup.d/startup.log
 mkdir -p ~/.bash_old/startup.d
+mkdir -p ~/.bash_old/perl-bits
 mv ~/startup.d/misc.sh ~/.bash_old/misc.sh 2>/dev/null
+mv ~/perl-bits/basename_sort.pl ~/.bash_old/perl-bits/ 2>/dev/null
 
 ln -s "${DIR}/.bash_bindings" ~/.bash_bindings
 ln -s "${DIR}/.bash_fxns" ~/.bash_fxns
@@ -29,3 +32,6 @@ ln -s "${DIR}/.profile" ~/.profile
 ln -s "${DIR}/.Xresources" ~/.Xresources
 ln -s "${DIR}/.xsessionrc" ~/.xsessionrc
 ln -s "${DIR}/startup.d/misc.sh" ~/startup.d/misc.sh
+ln -s "${DIR}/perl-bits/basename_sort.pl" ~/perl-bits/basename_sort.pl
+
+echo "Finished"

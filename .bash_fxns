@@ -177,7 +177,7 @@ function geanyy
     if [ -z ${1+x} ]; then
 		echo "geanyy requires at least one argument"
     else
-		geany "$@" &>/dev/null &
+		geany -i "$@" &>/dev/null &
     fi
 }
 
@@ -186,7 +186,7 @@ function geanyyp
     if [ -z ${1+x} ]; then
 		echo "geanyy requires at least one argument"
     else
-		geany -p "$@" &>/dev/null &
+		geany -pi "$@" &>/dev/null &
     fi
 }
 
@@ -298,7 +298,7 @@ function c_psql_connect
 # example usage: find . -type f | basename_sort
 function basename_sort
 {
-	perl -e 'print sort{($p=$a)=~s!.*/!!;($q=$b)=~s!.*/!!;$p cmp$q}<>'
+	~/perl-bits/basename_sort.pl "${@}"
 }
 
 #exports

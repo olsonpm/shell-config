@@ -4,7 +4,7 @@
 # wpid = watch process id
 # spid = server process id
 
-export pd=/home/phil/misc-git-repos/my-repos/personal-home
+export pd=/home/phil/misc-git-repos/my-repos/fluent-object
 export my_repos=/home/phil/misc-git-repos/my-repos
 export forked_repos=/home/phil/misc-git-repos/forked-repos
 export cloned_repos=/home/phil/misc-git-repos/cloned-repos
