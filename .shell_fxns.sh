@@ -1,6 +1,6 @@
-#!/bin/bash
+#! /usr/bin/env sh
 
-function cdd() 
+function cdd()
 {
     dir=""
     filter=""
@@ -8,7 +8,7 @@ function cdd()
     if [ "$1" != "" ]; then
 		dir="$1"
     fi
-    
+
     if [ "$2" != "" ]; then
 		filter="$2"
     fi
@@ -19,7 +19,7 @@ function cdd()
 		cd "$dir" && ls
     elif [ "$dir" = "" ]; then
 		cd ~ && ls
-    fi	
+    fi
 }
 
 function catt()
@@ -155,7 +155,7 @@ function documentLine
 	printfNumTimes() {
 		str=$1
 		num=$2
-		
+
 		perl -E "print '${str}' x ${num}"
 	}
 
@@ -221,7 +221,7 @@ function c_execute
 		regex="--execute=(.*?)--"
 		if [[ "${fileContents}" =~ \-\-execute\=([a-z0-9_/]*)\-\- ]]; then
 			match="${BASH_REMATCH[1]}"
-			
+
 			case ${fileExtension} in
 			js)
 				case ${match} in
@@ -320,12 +320,12 @@ export -f c_watch_restart
 
 
 # external fxn libs
-if [ -f ~/.bash_fxns.d/git ]; then
-	. ~/.bash_fxns.d/git
+if [ -f ~/.shell_fxns.d/git.sh ]; then
+	. ~/.shell_fxns.d/git.sh
 fi
-if [ -f ~/.bash_fxns.d/npm ]; then
-	. ~/.bash_fxns.d/npm
+if [ -f ~/.shell_fxns.d/npm.sh ]; then
+	. ~/.shell_fxns.d/npm.sh
 fi
-if [ -f ~/.bash_fxns.d/docker ]; then
-    . ~/.bash_fxns.d/docker
+if [ -f ~/.shell_fxns.d/docker ]; then
+    . ~/.shell_fxns.d/docker
 fi

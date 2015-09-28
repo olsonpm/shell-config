@@ -108,8 +108,8 @@ fi
 
 # Load custom shell fxns
 
-if [ -f ~/.bash_fxns ]; then
-    . ~/.bash_fxns
+if [ -f ~/.shell_fxns.sh ]; then
+    . ~/.shell_fxns.sh
 fi
 if [ -f ~/.bash_bindings ]; then
     . ~/.bash_bindings
