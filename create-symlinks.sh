@@ -2,36 +2,37 @@
 
 DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 
-rm -rf ~/.bash_old
-mkdir ~/.bash_old
-mv ~/.bash_bindings ~/.bash_old 2>/dev/null
-mv ~/.shell_fxns.sh ~/.bash_old 2>/dev/null
-mv ~/.bash_logout ~/.bash_old 2>/dev/null
-mv ~/.bash_vars ~/.bash_old 2>/dev/null
-mv ~/.bashrc ~/.bash_old 2>/dev/null
-mv ~/.jshintrc ~/.bash_old 2>/dev/null
-mv ~/.profile ~/.bash_old 2>/dev/null
-mv ~/.Xresources ~/.bash_old 2>/dev/null
-mv ~/.xsessionrc ~/.bash_old 2>/dev/null
+cp ~/.jshintrc ~/.jshintrc.old 2>/dev/null
+cp ~/.sh_vars ~/.sh_vars.old 2>/dev/null
+cp ~/.Xresources ~/.Xresources.old 2>/dev/null
+cp -r ~/perl-bits ~/perl-bits.old 2>/dev/null
 
-mkdir -p ~/startup.d
-mkdir -p ~/perl-bits
-touch ~/startup.d/startup.log
-mkdir -p ~/.bash_old/startup.d
-mkdir -p ~/.bash_old/perl-bits
-mv ~/startup.d/misc.sh ~/.bash_old/misc.sh 2>/dev/null
-mv ~/perl-bits/basename_sort.pl ~/.bash_old/perl-bits/ 2>/dev/null
+if [ -d ~/bin ]; then
+  cp ~/bin/basename_sort ~/bin/basename_sort.old 2>/dev/null
+  cp ~/bin/cdd ~/bin/cdd.old 2>/dev/null
+  cp ~/bin/lss ~/bin/lss.old 2>/dev/null
+  cp ~/bin/mkdirr ~/bin/mkdirr.old 2>/dev/null
+else
+  mkdir ~/bin
+fi
 
-ln -s "${DIR}/.bash_bindings" ~/.bash_bindings
-ln -s "${DIR}/.shell_fxns.sh" ~/.shell_fxns.sh
-ln -s "${DIR}/.bash_logout" ~/.bash_logout
-ln -s "${DIR}/.bash_vars" ~/.bash_vars
-ln -s "${DIR}/.bashrc" ~/.bashrc
+rm -rf ~/.jshintrc
+rm -rf ~/.sh_vars
+rm -rf ~/.Xresources
+rm -rf ~/perl-bits
+rm -rf ~/bin/basename_sort
+rm -rf ~/bin/cdd
+rm -rf ~/bin/lss
+rm -rf ~/bin/mkdirr
+
 ln -s "${DIR}/.jshintrc" ~/.jshintrc
-ln -s "${DIR}/.profile" ~/.profile
+ln -s "${DIR}/.sh_vars" ~/.sh_vars
 ln -s "${DIR}/.Xresources" ~/.Xresources
-ln -s "${DIR}/.xsessionrc" ~/.xsessionrc
-ln -s "${DIR}/startup.d/misc.sh" ~/startup.d/misc.sh
-ln -s "${DIR}/perl-bits/basename_sort.pl" ~/perl-bits/basename_sort.pl
+ln -s "${DIR}/perl-bits" ~/perl-bits
+ln -s "${DIR}/bin/basename_sort" ~/bin/basename_sort
+ln -s "${DIR}/
+ln -s "${DIR}/bin/cdd" ~/bin/cdd
+ln -s "${DIR}/bin/lss" ~/bin/lss
+ln -s "${DIR}/bin/mkdirr" ~/bin/mkdirr
 
 echo "Finished"

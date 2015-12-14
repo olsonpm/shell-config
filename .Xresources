@@ -15,23 +15,23 @@ xterm*eightBitInput: false
 #define _color0        #000d18
 #define _color8        #000d18
 !RED Tag
-#define _color1        #e89393
-#define _color9        #e89393
+#define _color1        #FF5F5F
+#define _color9        #FF5F5F
 !GRN SpecialKey
-#define _color2        #9ece9e
-#define _color10       #9ece9e
+#define _color2        #5EAD5E
+#define _color10       #5EAD5E
 !YEL Keyword
-#define _color3        #f0dfaf
-#define _color11       #f0dfaf
+#define _color3        #FFE089
+#define _color11       #FFE089
 !BLU Number
 #define _color4        #8cd0d3
 #define _color12       #8cd0d3
 !MAG Precondit
-#define _color5        #c0bed1
-#define _color13       #c0bed1
+#define _color5        #D788FF
+#define _color13       #D788FF
 !CYN Float
-#define _color6        #dfaf8f
-#define _color14       #dfaf8f
+#define _color6        #FFAB72
+#define _color14       #FFAB72
 !WHT Search
 #define _color7        #efefef
 #define _color15       #efefef
@@ -41,7 +41,7 @@ xterm*eightBitInput: false
 #define _colorIT       #80d4aa
 !TXT Normal, Normal, Cursor
 #define _foreground    #dcdccc
-#define _background    #1f1f1f
+#define _background    #0A0A0A
 #define _cursorColor   #8faf9f
 !CUSTOM gray
 #define _color90_0       #797979
