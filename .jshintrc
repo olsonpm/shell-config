@@ -20,4 +20,6 @@
         , "afterEach": false
         , "it": false
     }
+
+    , "-W097": false
 }

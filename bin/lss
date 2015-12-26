@@ -1,9 +1,0 @@
-#! /usr/bin/env sh
-
-if [ "$1" != "" ] && [ "$2" != "" ]; then
-  ls -a "$1" | grep -i "$2"
-elif [ "$1" != "" ] && [ "$2" == "" ]; then
-  ls -a ./ | grep -i "$1"
-else #both $1 and $2 were empty
-  echo "Error: No arguments were given"
-fi
