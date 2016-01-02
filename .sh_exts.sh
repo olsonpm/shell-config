@@ -1,4 +1,5 @@
-#! /usr/bin/env bash
+#! /usr/bin/env sh
 
-. ~/.sh_fxns.sh
-. ~/.sh_vars.sh
+. "${HOME}"/.sh_misc.sh
+. "${HOME}"/.sh_fxns.sh
+. "${HOME}"/.sh_vars.sh

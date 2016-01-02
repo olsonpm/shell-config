@@ -1,27 +1,28 @@
-#! /usr/bin/env bash
+#! /usr/bin/env sh
 
-function cdd() {
+cdd() {
   dir=""
   filter=""
-
+  
   if [ "$1" != "" ]; then
     dir="$1"
   fi
-
+  
   if [ "$2" != "" ]; then
     filter="$2"
   fi
-
+  
   if [ "$filter" != "" ]; then
+    # shellcheck disable=SC2010
     cd "$dir" && ls | grep -i "$filter"
-  elif [ "$dir" != "" ]; then
+    elif [ "$dir" != "" ]; then
     cd "$dir" && ls
-  elif [ "$dir" = "" ]; then
+    elif [ "$dir" = "" ]; then
     cd ~ && ls
   fi
 }
 
-function mkdirr() {
+mkdirr() {
   if [ "$1" != "" ]; then
     mkdir "$1" && cd "$1"
   else
