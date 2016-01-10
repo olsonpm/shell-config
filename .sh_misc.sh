@@ -4,7 +4,7 @@ export GIT_PAGER='';
 
 setopt extendedglob
 
-xrdb -merge $HOME/.Xresources
+command -v xrdb >/dev/null 2>&1 && xrdb -merge $HOME/.Xresources
 
 bindkey "\033[;55" backward-kill-word
 bindkey "\033[53" kill-word
