@@ -14,7 +14,8 @@
     "es6": true,
     "node": true,
     "browser": true,
-    "amd": true
+    "amd": true,
+    "mocha": true
   },
   "globals": {
      "atom": true

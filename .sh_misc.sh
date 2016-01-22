@@ -4,7 +4,10 @@ export GIT_PAGER='';
 
 setopt extendedglob
 
-command -v xrdb >/dev/null 2>&1 && xrdb -merge $HOME/.Xresources
+platform=$(uname)
+if [ "${platform}" != "Darwin" ]; then
+  command -v xrdb >/dev/null 2>&1 && xrdb -merge $HOME/.Xresources
+fi
 
 bindkey "\033[;55" backward-kill-word
 bindkey "\033[53" kill-word
