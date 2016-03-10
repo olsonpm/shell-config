@@ -9,6 +9,8 @@ if [ "${platform}" != "Darwin" ]; then
   command -v xrdb >/dev/null 2>&1 && xrdb -merge $HOME/.Xresources
 fi
 
+alias git-list-untracked='git ls-files --others --exclude-standard'
+
 bindkey "\033[;55" backward-kill-word
 bindkey "\033[53" kill-word
 bindkey "\C-k" kill-whole-line
