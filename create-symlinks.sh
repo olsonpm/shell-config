@@ -9,11 +9,13 @@ cp ${HOME}/.sh_vars.sh ${HOME}/.sh_vars.old.sh 2>/dev/null
 cp ${HOME}/.sh_fxns.sh ${HOME}/.sh_fxns.old.sh 2>/dev/null
 cp ${HOME}/.sh_exts.sh ${HOME}/.sh_exts.old.sh 2>/dev/null
 cp ${HOME}/.sh_misc.sh ${HOME}/.sh_misc.old.sh 2>/dev/null
+rm -rf ${HOME}/perl-bits.old 2>/dev/null
 cp -r ${HOME}/perl-bits ${HOME}/perl-bits.old 2>/dev/null
 
 if [ -d ${HOME}/bin ]; then
   cp ${HOME}/bin/basename_sort ${HOME}/bin/basename_sort.old 2>/dev/null
   cp ${HOME}/bin/suspend ${HOME}/bin/suspend.old 2>/dev/null
+  cp ${HOME}/bin/trash ${HOME}/bin/trash.old 2>/dev/null
 else
   mkdir ${HOME}/bin
 fi
@@ -28,6 +30,7 @@ rm -rf ${HOME}/.sh_misc.sh
 rm -rf ${HOME}/perl-bits
 rm -rf ${HOME}/bin/basename_sort
 rm -rf ${HOME}/bin/suspend
+rm -rf ${HOME}/bin/trash
 
 ln -s "${DIR}/.eslintrc.json" ${HOME}/.eslintrc.json
 ln -s "${DIR}/.jshintrc" ${HOME}/.jshintrc
@@ -39,5 +42,6 @@ ln -s "${DIR}/.sh_misc.sh" ${HOME}/.sh_misc.sh
 ln -s "${DIR}/perl-bits" ${HOME}/perl-bits
 ln -s "${DIR}/bin/basename_sort" ${HOME}/bin/basename_sort
 ln -s "${DIR}/bin/suspend" ${HOME}/bin/suspend
+ln -s "${DIR}/bin/trash" ${HOME}/bin/trash
 
 echo "Finished"

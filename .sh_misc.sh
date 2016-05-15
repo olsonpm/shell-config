@@ -6,7 +6,7 @@ setopt extendedglob
 
 alias git-list-untracked='git ls-files --others --exclude-standard'
 
-bindkey '^H' backward-kill-word
+bindkey "\x08" backward-kill-word
 bindkey '^[[3;5~' kill-word
 bindkey '^k' kill-whole-line
 bindkey '^u' backward-kill-line
