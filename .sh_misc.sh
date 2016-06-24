@@ -25,3 +25,5 @@ load-nvmrc() {
   fi
 }
 add-zsh-hook chpwd load-nvmrc
+
+alias jqd='jq .dependencies package.json'
