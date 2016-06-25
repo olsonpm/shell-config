@@ -1,3 +1,3 @@
 #! /usr/bin/env sh
 
-pwd | tr '\n' ' ' | copy
+pwd | tr -d '\n' | copy
