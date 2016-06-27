@@ -10,6 +10,11 @@ if [ "${pasteCmd}" = '' ]; then
     && { pasteCmd='pbPaste'; }
 fi
 
+if [ "${pasteCmd}" = '' ]; then
+  echo "no paste command found!" >&2
+  exit 1
+fi
+
 if [ "$*" = '' ]; then
   ${pasteCmd}
 else
