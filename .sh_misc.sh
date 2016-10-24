@@ -19,11 +19,21 @@ bindkey '^I' expand-or-complete
 bindkey "\x02" kill-line
 
 autoload -U add-zsh-hook
-load-nvmrc() {
-  if [[ -f .nvmrc && -r .nvmrc ]]; then
+load_nvmrc() {
+  if [ -f .nvmrc ] && [ -r .nvmrc ]; then
     nvm use
   fi
 }
-add-zsh-hook chpwd load-nvmrc
+add-zsh-hook chpwd load_nvmrc
+
+load_jenv() {
+  if [ -s "/home/phil/.jenv/bin/jenv-init.sh" ]; then
+    . "/home/phil/.jenv/bin/jenv-init.sh"
+    . "/home/phil/.jenv/commands/completion.sh"
+  fi
+}
 
 alias jqd='jq .dependencies package.json'
+
+# NSS related env vars
+export NSS_DEFAULT_DB_TYPE='sql:'
