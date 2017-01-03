@@ -37,3 +37,5 @@ alias jqd='jq .dependencies package.json'
 
 # NSS related env vars
 export NSS_DEFAULT_DB_TYPE='sql:'
+
+alias un7zip='7za e'
