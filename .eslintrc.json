@@ -3,23 +3,14 @@
     "es6": true,
     "node": true,
     "browser": true,
-    "amd": true,
     "mocha": true
   },
   "extends": [
     "eslint:recommended"
-    , "plugin:react/recommended"
   ],
-  "globals": {
-    "atom": true
-    , "React": true
-  },
   "parserOptions": {
-    "ecmaVersion": 6
-    , "sourceType": "module"
-    , "ecmaFeatures": { "jsx": true }
+    "ecmaVersion": 8
   },
-  "plugins": ["react"],
   "rules": {
     "linebreak-style": [
       2,
@@ -30,6 +21,14 @@
       "always"
     ],
     "no-console": 0,
-    "react/react-in-jsx-scope": "off"
+    "no-unused-vars": [
+      "error",
+      {
+        "vars": "all",
+        "args": "all",
+        "ignoreRestSiblings": false,
+        "argsIgnorePattern": "^_"
+      }
+    ]
   }
 }
