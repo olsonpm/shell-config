@@ -18,13 +18,13 @@ bindkey '^I' expand-or-complete
 #   escape sequence being '^I'.
 bindkey "\x02" kill-line
 
-autoload -U add-zsh-hook
+#autoload -U add-zsh-hook
 load_nvmrc() {
   if [ -f .nvmrc ] && [ -r .nvmrc ]; then
     nvm use
   fi
 }
-add-zsh-hook chpwd load_nvmrc
+#add-zsh-hook chpwd load_nvmrc
 
 load_jenv() {
   if [ -s "/home/phil/.jenv/bin/jenv-init.sh" ]; then
