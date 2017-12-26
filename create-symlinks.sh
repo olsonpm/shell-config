@@ -2,10 +2,6 @@
 
 DIR="$( cd "$( dirname "${0}" )" && pwd )"
 
-cp "${HOME}/.babelrc ${HOME}/.babelrc.old" 2>/dev/null
-cp "${HOME}/.eslintrc.json ${HOME}/.eslintrc.old.json" 2>/dev/null
-cp "${HOME}/.jsbeautifyrc ${HOME}/.jsbeautifyrc.old" 2>/dev/null
-cp "${HOME}/.jshintrc ${HOME}/.jshintrc.old" 2>/dev/null
 cp "${HOME}/.sh_vars.sh ${HOME}/.sh_vars.old.sh" 2>/dev/null
 cp "${HOME}/.sh_fxns.sh ${HOME}/.sh_fxns.old.sh" 2>/dev/null
 cp "${HOME}/.sh_exts.sh ${HOME}/.sh_exts.old.sh" 2>/dev/null
