@@ -1,4 +1,4 @@
-#!/usr/bin/env sh
+#! /usr/bin/env sh
 
 DIR="$( cd "$( dirname "${0}" )" && pwd )"
 
@@ -13,6 +13,7 @@ if [ -d "${HOME}/bin" ]; then
   cp "${HOME}/bin/basename_sort ${HOME}/bin/basename_sort.old" 2>/dev/null
   cp "${HOME}/bin/cless ${HOME}/bin/cless.old" 2>/dev/null
   cp "${HOME}/bin/copy ${HOME}/bin/copy.old" 2>/dev/null
+  cp "${HOME}/bin/my-tidy ${HOME}/bin/my-tidy.old" 2>/dev/null
   cp "${HOME}/bin/paste ${HOME}/bin/paste.old" 2>/dev/null
   cp "${HOME}/bin/pwdcp ${HOME}/bin/pwdcp.old" 2>/dev/null
   cp "${HOME}/bin/suspend ${HOME}/bin/suspend.old" 2>/dev/null
@@ -34,6 +35,7 @@ rm -rf "${HOME}/perl-bits"
 rm -rf "${HOME}/bin/basename_sort"
 rm -rf "${HOME}/bin/copy"
 rm -rf "${HOME}/bin/cless"
+rm -rf "${HOME}/bin/my-tidy"
 rm -rf "${HOME}/bin/paste"
 rm -rf "${HOME}/bin/pwdcp"
 rm -rf "${HOME}/bin/suspend"
@@ -52,6 +54,7 @@ ln -s "${DIR}/perl-bits" "${HOME}/perl-bits"
 ln -s "${DIR}/bin/basename_sort" "${HOME}/bin/basename_sort"
 ln -s "${DIR}/bin/cless" "${HOME}/bin/cless"
 ln -s "${DIR}/bin/copy" "${HOME}/bin/copy"
+ln -s "${DIR}/bin/my-tidy" "${HOME}/bin/my-tidy"
 ln -s "${DIR}/bin/paste" "${HOME}/bin/paste"
 ln -s "${DIR}/bin/pwdcp" "${HOME}/bin/pwdcp"
 ln -s "${DIR}/bin/suspend" "${HOME}/bin/suspend"
