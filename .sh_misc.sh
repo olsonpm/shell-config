@@ -1,6 +1,9 @@
 #!/usr/bin/env sh
 
-alias ls='ls --color'
+case "${OSTYPE}" in
+  darwin*) alias ls='ls -G' ;;
+  linux-gnu) alias ls='ls --color' ;;
+esac
 
 export GIT_PAGER='';
 
