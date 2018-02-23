@@ -1,5 +1,7 @@
 #!/usr/bin/env sh
 
+alias ls='ls --color'
+
 export GIT_PAGER='';
 
 setopt extendedglob
@@ -13,6 +15,7 @@ bindkey '^u' backward-kill-line
 bindkey '^[OH' beginning-of-line
 bindkey '^[OF' end-of-line
 bindkey '^I' expand-or-complete
+bindkey '^[[3~' delete-char
 
 alias jqd='jq .dependencies package.json'
 alias jqs='jq .scripts package.json'
