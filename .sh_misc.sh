@@ -5,7 +5,8 @@ case "${OSTYPE}" in
   linux-gnu) alias ls='ls --color' ;;
 esac
 
-export GIT_PAGER='';
+export EDITOR='nano'
+export GIT_PAGER=''
 
 setopt extendedglob
 
