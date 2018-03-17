@@ -8,16 +8,16 @@ if [ ! -d "${sourceDir}" ]; then
   error=1
   echo "'${sourceDir}' is not a directory" >&2
 fi
-if [ ! -d "${destDir}" ]; then
+if [ -e "${destDir}" ] && [ ! -d "${destDir}" ]; then
   error=1
-  echo "'${destDir}' is not a directory" >&2
+  echo "'${destDir}' exists and is not a directory" >&2
 fi
 
 if [ ${error} = 0 ]; then
   rm -rf "${destDir}"
   mkdir "${destDir}"
-  rsync -avz "${sourceDir}/" "${destDir}/"
+  rsync --delete -ahvz --exclude=node_modules --exclude=tests --exclude=.git "${sourceDir}/" "${destDir}/"
   while inotifywait -r -e modify,create,delete "${sourceDir}"; do
-      rsync -avz "${sourceDir}/" "${destDir}/"
+    rsync --delete -ahvz --exclude=node_modules --exclude=tests --exclude=.git "${sourceDir}/" "${destDir}/"
   done
 fi
