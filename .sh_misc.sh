@@ -1,8 +1,15 @@
 #!/usr/bin/env sh
 
+# shellcheck disable=SC2039
 case "${OSTYPE}" in
-  darwin*) alias ls='ls -G' ;;
-  linux-gnu) alias ls='ls --color' ;;
+  darwin*)
+    alias ls='ls -G' ;;
+
+  linux-gnu)
+    if [ "$(command -v xset)" ]; then
+      xset r rate 200 100
+    fi
+    alias ls='ls --color' ;;
 esac
 
 export EDITOR='nano'
