@@ -8,6 +8,8 @@ case "${OSTYPE}" in
   linux-gnu)
     if [ "$(command -v xset)" ]; then
       xset r rate 200 100
+    else
+      echo "warning: xset command not found - keyboard repeat rates not set"
     fi
     alias ls='ls --color' ;;
 esac

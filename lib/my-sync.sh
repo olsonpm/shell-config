@@ -1,5 +1,38 @@
 #! /usr/bin/env sh
 
+__join__result=""
+join() {
+  str1="${1}"
+  str2="${2}"
+
+  if [ "${str1}" != "" ] && [ "${str2}" != "" ]; then
+    __join__result="${str1}, ${str2}"
+  elif [ "${str1}" != "" ]; then
+    __join__result="${str1}"
+  else
+    __join__result="${str2}"
+  fi
+}
+
+commandsNotFound=""
+if [ ! "$(command -v rsync)" ]; then
+  commandsNotFound="rsync"
+fi
+if [ ! "$(command -v inotifywait)" ]; then
+  join "${commandsNotFound}" "inotifywait"
+  commandsNotFound="${__join__result}"
+fi
+
+if [ "${commandsNotFound}" != "" ]; then
+  printf "Error: The following commands must be installed before using my-sync\\n\\n" >&2
+  echo   "${commandsNotFound}" >&2
+  exit 1
+fi
+
+#
+# No errors, woo woo
+#
+
 sourceDir="$(realpath "${1}")"
 destDir="$(realpath "${2}")"
 error=0
