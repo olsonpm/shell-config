@@ -13,7 +13,8 @@ if [ -d "${HOME}/bin" ]; then
   cp "${HOME}/bin/basename_sort ${HOME}/bin/basename_sort.old" 2>/dev/null
   cp "${HOME}/bin/cless ${HOME}/bin/cless.old" 2>/dev/null
   cp "${HOME}/bin/copy ${HOME}/bin/copy.old" 2>/dev/null
-  cp "${HOME}/bin/my-sync ${HOME}/bin/my-sync.old" 2>/dev/null
+  cp "${HOME}/bin/my-local-sync ${HOME}/bin/my-local-sync.old" 2>/dev/null
+  cp "${HOME}/bin/my-remote-sync ${HOME}/bin/my-remote-sync.old" 2>/dev/null
   cp "${HOME}/bin/my-tidy ${HOME}/bin/my-tidy.old" 2>/dev/null
   cp "${HOME}/bin/paste ${HOME}/bin/paste.old" 2>/dev/null
   cp "${HOME}/bin/pwdcp ${HOME}/bin/pwdcp.old" 2>/dev/null
@@ -33,7 +34,8 @@ rm -rf "${HOME}/perl-bits"
 rm -rf "${HOME}/bin/basename_sort"
 rm -rf "${HOME}/bin/copy"
 rm -rf "${HOME}/bin/cless"
-rm -rf "${HOME}/bin/my-sync"
+rm -rf "${HOME}/bin/my-local-sync"
+rm -rf "${HOME}/bin/my-remote-sync"
 rm -rf "${HOME}/bin/my-tidy"
 rm -rf "${HOME}/bin/paste"
 rm -rf "${HOME}/bin/pwdcp"
@@ -50,7 +52,8 @@ ln -s "${DIR}/perl-bits" "${HOME}/perl-bits"
 ln -s "${DIR}/bin/basename_sort" "${HOME}/bin/basename_sort"
 ln -s "${DIR}/bin/cless" "${HOME}/bin/cless"
 ln -s "${DIR}/bin/copy" "${HOME}/bin/copy"
-ln -s "${DIR}/bin/my-sync" "${HOME}/bin/my-sync"
+ln -s "${DIR}/bin/my-local-sync" "${HOME}/bin/my-local-sync"
+ln -s "${DIR}/bin/my-remote-sync" "${HOME}/bin/my-remote-sync"
 ln -s "${DIR}/bin/my-tidy" "${HOME}/bin/my-tidy"
 ln -s "${DIR}/bin/paste" "${HOME}/bin/paste"
 ln -s "${DIR}/bin/pwdcp" "${HOME}/bin/pwdcp"

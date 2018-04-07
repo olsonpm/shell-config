@@ -24,7 +24,7 @@ if [ ! "$(command -v inotifywait)" ]; then
 fi
 
 if [ "${commandsNotFound}" != "" ]; then
-  printf "Error: The following commands must be installed before using my-sync\\n\\n" >&2
+  printf "Error: The following commands must be installed before using my-local-sync\\n\\n" >&2
   echo   "${commandsNotFound}" >&2
   exit 1
 fi
@@ -46,11 +46,13 @@ if [ -e "${destDir}" ] && [ ! -d "${destDir}" ]; then
   echo "'${destDir}' exists and is not a directory" >&2
 fi
 
-if [ ${error} = 0 ]; then
-  rm -rf "${destDir}"
-  mkdir "${destDir}"
-  rsync --delete -ahvz --exclude=node_modules --exclude=tests --exclude=.git "${sourceDir}/" "${destDir}/"
-  while inotifywait -r -e modify,create,delete "${sourceDir}"; do
-    rsync --delete -ahvz --exclude=node_modules --exclude=tests --exclude=.git "${sourceDir}/" "${destDir}/"
-  done
+if [ ${error} = 1 ]; then
+  exit 1
 fi
+
+rm -rf "${destDir}"
+mkdir "${destDir}"
+rsync --delete -ahvz --exclude=node_modules --exclude=tests --exclude=.git "${sourceDir}/" "${destDir}/"
+while inotifywait -r -e modify,create,delete "${sourceDir}"; do
+  rsync --delete -ahvz --exclude=node_modules --exclude=tests --exclude=.git "${sourceDir}/" "${destDir}/"
+done
