@@ -25,7 +25,7 @@ if [ ! "$(command -v inotifywait)" ]; then
 fi
 
 if [ "${commandsNotFound}" != "" ]; then
-  printf "Error: The following commands must be installed before using my-local-sync\\n\\n" >&2
+  printf "Error: The following commands must be installed before using my-remote-sync\\n\\n" >&2
   echo   "${commandsNotFound}" >&2
   exit 1
 fi
