@@ -38,18 +38,12 @@ export NSS_DEFAULT_DB_TYPE='sql:'
 
 alias un7zip='7za e'
 
+# zsh is so much fun -.-
 
-#
-# let's make ctrl+r do what we want
-#
-
-function good_reverse_search {
-  # read the history file *then* trigger the search backward command
+function read_history_then_reverse_search {
   fc -R && zle history-incremental-search-backward
 }
 
-# register the zsh function as a widget
-zle -N good_reverse_search
+zle -N read_history_then_reverse_search
 
-# and finally bind it to ctrl+r
-bindkey '^R' good_reverse_search
+bindkey '^E' read_history_then_reverse_search
