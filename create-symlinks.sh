@@ -25,7 +25,6 @@ else
   mkdir "${HOME}/bin"
 fi
 
-rm -rf "${HOME}/.eslintrc.json"
 rm -rf "${HOME}/.sh_vars.sh"
 rm -rf "${HOME}/.sh_fxns.sh"
 rm -rf "${HOME}/.sh_exts.sh"
@@ -43,7 +42,6 @@ rm -rf "${HOME}/bin/suspend"
 rm -rf "${HOME}/bin/trash"
 rm -rf "${HOME}/bin/trim"
 
-ln -s "${DIR}/.eslintrc.json" "${HOME}/.eslintrc.json"
 ln -s "${DIR}/.sh_vars.sh" "${HOME}/.sh_vars.sh"
 ln -s "${DIR}/.sh_fxns.sh" "${HOME}/.sh_fxns.sh"
 ln -s "${DIR}/.sh_exts.sh" "${HOME}/.sh_exts.sh"
