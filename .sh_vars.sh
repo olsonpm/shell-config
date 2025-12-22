@@ -9,6 +9,7 @@ export pr="${HOME}/git-repos/pr"
 export PATH=$HOME/bin:$PATH
 export dupes="${HOME}/git-repos/dupes"
 
-# wayland support
-export ELECTRON_OZONE_PLATFORM_HINT=wayland
-export QT_QPA_PLATFORM=wayland
+if [ "${XDG_SESSION_TYPE}" = "wayland" ]; then
+  export ELECTRON_OZONE_PLATFORM_HINT='wayland'
+  export QT_QPA_PLATFORM=wayland
+fi

@@ -32,7 +32,10 @@ bindkey '^[[3~' delete-char
 
 alias jqd='jq .dependencies package.json'
 alias jqs='jq .scripts package.json'
-alias code=codium
+
+if [ "$(command -v codium)" ]; then
+  alias code="codium"
+fi
 
 # NSS related env vars
 export NSS_DEFAULT_DB_TYPE='sql:'
