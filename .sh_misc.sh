@@ -11,7 +11,7 @@ case "${OSTYPE}" in
     elif [ "${ignore_xset_not_found}" = "" ]; then
       echo "warning: xset command not found - keyboard repeat rates not set"
     fi
-    alias ls='ls --color' ;;
+    alias ls='ls --color=auto' ;;
 esac
 
 export EDITOR='nano'
@@ -32,6 +32,7 @@ bindkey '^[[3~' delete-char
 
 alias jqd='jq .dependencies package.json'
 alias jqs='jq .scripts package.json'
+alias code=codium
 
 # NSS related env vars
 export NSS_DEFAULT_DB_TYPE='sql:'
@@ -46,4 +47,4 @@ function read_history_then_reverse_search {
 
 zle -N read_history_then_reverse_search
 
-bindkey '^E' read_history_then_reverse_search
+bindkey '^[[101;6u' read_history_then_reverse_search
