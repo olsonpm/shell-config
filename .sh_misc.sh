@@ -50,4 +50,5 @@ function read_history_then_reverse_search {
 
 zle -N read_history_then_reverse_search
 
+# '^[[101;6u' is ctrl+shift+e
 bindkey '^[[101;6u' read_history_then_reverse_search
