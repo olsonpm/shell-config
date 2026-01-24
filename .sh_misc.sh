@@ -1,15 +1,21 @@
 #!/usr/bin/env sh
 
+inSshSession() {
+  [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ];
+}
+
 # shellcheck disable=SC2039
 case "${OSTYPE}" in
   darwin*)
     alias ls='ls -G' ;;
 
   linux-gnu)
-    if [ "$(command -v xset)" ]; then
-      xset r rate 200 100
-    elif [ "${ignore_xset_not_found}" = "" ]; then
-      echo "warning: xset command not found - keyboard repeat rates not set"
+    if ! inSshSession; then
+      if [ "$(command -v xset)" ]; then
+        xset r rate 200 100
+      else
+        echo "warning: xset command not found - keyboard repeat rates not set"
+      fi
     fi
     alias ls='ls --color=auto' ;;
 esac
@@ -30,12 +36,12 @@ bindkey '^[OF' end-of-line
 bindkey '^I' expand-or-complete
 bindkey '^[[3~' delete-char
 
-alias jqd='jq .dependencies package.json'
-alias jqs='jq .scripts package.json'
-
 if [ "$(command -v codium)" ]; then
   alias code="codium"
 fi
+
+alias c.='codium .'
+alias e.='nautilus --new-window . >/dev/null 2>&1 &!'
 
 # NSS related env vars
 export NSS_DEFAULT_DB_TYPE='sql:'
@@ -43,8 +49,7 @@ export NSS_DEFAULT_DB_TYPE='sql:'
 alias un7zip='7za e'
 
 # zsh is so much fun -.-
-
-function read_history_then_reverse_search {
+read_history_then_reverse_search() {
   fc -R && zle history-incremental-search-backward
 }
 
