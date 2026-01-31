@@ -6,7 +6,8 @@ export forked="${HOME}/git-repos/forked"
 export cloned="${HOME}/git-repos/cloned"
 export work="${HOME}/git-repos/work"
 export pr="${HOME}/git-repos/pr"
-export PATH=$HOME/bin:$PATH
+export PATH="${HOME}/bin:$PATH"
+export PATH="${HOME}/.local/bin:$PATH"
 export dupes="${HOME}/git-repos/dupes"
 
 if [ "${XDG_SESSION_TYPE}" = "wayland" ]; then
